@@ -19,7 +19,6 @@ class MoviePipeline(object):
         # open(mode="a") 追加模式，如果w模式的话会覆盖掉上次写的信息
         with open('my_meiju.txt', 'a', encoding='utf-8') as f:
             # 把对象，封装成了字典
-            # f.write(str(item['name']))
-            # 原始写法，item
-            f.write(str(item.name) + '\n')
+            f.write(str(item['name']) + '\n')
+            # 相对路径直接生成在项目的跟目录下，不是相对目录，建议用绝对路径
         return item

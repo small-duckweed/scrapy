@@ -7,5 +7,7 @@
 1. scrapy startproject movie
 2. scrapy genspider meiju meijutt.com
 3. 开发 spiders/meiju.py
+4. main.py 
+5. pycharm中运行，查看结果 
 
  

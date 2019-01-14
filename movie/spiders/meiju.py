@@ -17,12 +17,13 @@ class MeijuSpider(scrapy.Spider):
         movie_list = response.xpath('//ul[@class="top-list  fn-clear"]/li')  # [<li>对象, <li>对象, ...]
         for movie in movie_list:
             # . 是xpath的语法，表示在子标签(movie)基础上继续解析
-            # movie.xpath('.h5/a/text()').extract()[0]  # xpath() 返回 [Selector()]
+            # name = movie.xpath('./h5/a/text()').extract()[0]  # xpath() 返回 [Selector()]
             # xpath().extract() 返回的是一个列表,提取出字符串  如: ['剧集名1']
 
             # xpath().extract_first() 返回结果集的第一项  如：'剧集名1'
-            name = movie.xpath('.h5/a/text()').extract_first()
+            name = movie.xpath('./h5/a/text()').extract_first()
+            # print(movie, name)  # 建议debug而不是print，不然因为并发会重复打印多次信息
 
             item = MovieItem()
-            item.name = name   # itme["name"] = name  两种都行
+            item["name"] = name  # 框架自己的语法，不用类对象的写法
             yield item   # 相当于同步脚本方法中的return
